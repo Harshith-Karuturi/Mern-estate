@@ -45,7 +45,7 @@ export default function SignIn() {
 
   return (
     <div className="p-3 max-w-lg mx-auto ">
-      <h1 className="text-3xl text-center font-onChange={handleChange}bold my-7 text-green-600">
+      <h1 className="text-3xl text-center onChange={handleChange} font-bold my-7 text-green-600">
         Sign In
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
