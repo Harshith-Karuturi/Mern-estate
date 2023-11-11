@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -42,6 +42,10 @@ export default function SignIn() {
       dispatch(signInFailure(error.message));
     }
   };
+
+  useEffect(() => {
+    dispatch(signInFailure());
+  }, []);
 
   return (
     <div className="p-3 max-w-lg mx-auto ">

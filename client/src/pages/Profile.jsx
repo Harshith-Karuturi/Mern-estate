@@ -20,6 +20,7 @@ export default function Profile() {
   const [filePerc, setFileperce] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export default function Profile() {
         return;
       }
       dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
@@ -144,9 +146,12 @@ export default function Profile() {
       <div className="flex justify-between mt-5">
         <span className="text-red-700 cursor-pointer">Delete Account</span>
         <span className="text-red-700 cursor-pointer">Sign out</span>
-        <div>
-          <p className="text-red-700 mt-5">{error ? error : " "}</p>
-        </div>
+      </div>
+      <div>
+        <p className="text-red-700 mt-5">{error ? error : " "}</p>
+        <p className="text-green-700 mt-5">
+          {updateSuccess ? "User is updated Successfully!" : " "}
+        </p>
       </div>
     </div>
   );
