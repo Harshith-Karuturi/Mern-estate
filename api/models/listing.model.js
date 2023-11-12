@@ -4,53 +4,57 @@ const listingSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      requried: true,
+      required: true,
     },
 
     description: {
       type: String,
-      requried: true,
+      required: true,
     },
 
     address: {
       type: String,
-      requried: true,
+      required: true,
     },
     regularPrice: {
       type: Number,
-      requried: true,
+      required: true,
     },
     discountPrice: {
       type: Number,
-      requried: true,
+      required: true,
     },
     bathrooms: {
       type: Number,
-      requried: true,
+      required: true,
     },
     bedrooms: {
       type: Number,
-      requried: true,
+      required: true,
     },
     furnished: {
       type: Boolean,
-      requried: true,
+      required: true,
     },
     parking: {
       type: String,
-      requried: true,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
     },
     offer: {
       type: Boolean,
-      requried: true,
+      required: true,
     },
     imageUrls: {
       type: Array,
-      requried: true,
+      required: true,
     },
     userRef: {
       type: String,
-      requried: true,
+      required: true,
     },
   },
   { timestamps: true }
