@@ -31,7 +31,6 @@ export default function CreateListing() {
   const [Uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -142,7 +141,6 @@ export default function CreateListing() {
         }),
       });
       const data = await res.json();
-      console.log(data);
       setLoading(false);
       if (data.success === false) {
         setError(data.message);
@@ -332,7 +330,6 @@ export default function CreateListing() {
           <p className="text-red-700 text-sm">
             {imageUploadError && imageUploadError}
           </p>
-          {console.log(formData)}
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => {
               return (

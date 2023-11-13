@@ -69,7 +69,6 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      console.log(currentUser._id, formData);
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
@@ -79,7 +78,6 @@ export default function Profile() {
       });
 
       const data = await res.json();
-      console.log(data);
       if (data.success === false) {
         dispatch(updateUserFailure(data.message));
         return;
@@ -132,7 +130,6 @@ export default function Profile() {
         setShowListingError(true);
         return;
       }
-
       setUserListings(data);
     } catch (error) {
       setShowListingError(true);
@@ -148,8 +145,8 @@ export default function Profile() {
       if (data.success === false) {
         console.log(data.message);
       }
-      setUserListings((perv) =>
-        prev.filter((listing) => listing._id !== listingId)
+      setUserListings(
+        userListings.filter((listing) => listing._id !== listingId)
       );
     } catch (error) {
       console.log(error.message);
@@ -254,27 +251,29 @@ export default function Profile() {
                 key={listing._id}
                 className="border rounded-lg p-3 flex justify-between items-center gap-4"
               >
-                <Link to={`listing/${listing._id}`}>
+                <Link to={`/listing/${listing._id}`}>
                   <img
-                    className="h-16 w-16 object-contain "
                     src={listing.imageUrls[0]}
                     alt="listing cover"
+                    className="h-16 w-16 object-contain"
                   />
                 </Link>
                 <Link
-                  className="flex-1text-slate-700 font-semibold  hover:underline truncate"
+                  className="text-slate-700 font-semibold  hover:underline truncate flex-1"
                   to={`/listing/${listing._id}`}
                 >
                   <p>{listing.name}</p>
                 </Link>
-                <div className=" flex flex-col">
+                <div className="flex flex-col item-center">
                   <button
                     onClick={() => handleListingDelete(listing._id)}
                     className="text-red-700 uppercase"
                   >
                     Delete
                   </button>
-                  <button className="text-green-900 uppercase">Edit</button>
+                  <Link to={`/update-listing/${listing._id}`}>
+                    <button className="text-green-700 uppercase">Edit</button>
+                  </Link>
                 </div>
               </div>
             ))}
