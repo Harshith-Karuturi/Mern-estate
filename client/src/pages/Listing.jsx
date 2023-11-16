@@ -31,6 +31,7 @@ export default function Listing() {
   useEffect(() => {
     const fetchListing = async () => {
       try {
+        console.log(params);
         setLoading(true);
         const res = await fetch(`/api/listing/get/${params.listingId}`);
         const data = await res.json();
