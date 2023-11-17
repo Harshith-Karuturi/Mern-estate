@@ -17,7 +17,6 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShowMore] = useState(false);
-  console.log(listings);
 
   useEffect(() => {
     console.log(location);
@@ -253,7 +252,9 @@ export default function Search() {
 
           {showMore && (
             <button
-              onClick={onShowMoreClick}
+              onClick={() => {
+                onShowMoreClick();
+              }}
               className="text-green-700 hover:underline p-7 text-center w-full"
             >
               Show more
